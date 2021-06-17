@@ -45,17 +45,7 @@ gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
 ret, mtx, dist, rvecs, tvecs = cv.calibrateCamera(objpoints, imgpoints, gray.shape[::-1], None, None)
 
-capture = cv.VideoCapture(0)
-
-if not capture.isOpened():
-    print("Cannot open camera")
-    exit()
-
-while (True):
-    ret, img = capture.read()
-    h,  w = img.shape[:2]
-    newcameramtx, roi = cv.getOptimalNewCameraMatrix(mtx, dist, (w,h), 1, (w,h))
-    mapx, mapy = cv.initUndistortRectifyMap(mtx, dist, None, newcameramtx, (w,h), 5)
-    dst = cv.remap(img, mapx, mapy, cv.INTER_LINEAR , borderMode=cv.BORDER_CONSTANT)
-    cv.imshow('img', dst)
-    cv.waitKey(1)
+cal_file = cv.FileStorage("cal_data.xml", cv.FileStorage_WRITE)
+cal_file.write("CameraMatrix", mtx)
+cal_file.write("Distortion", dist)
+cal_file.release()

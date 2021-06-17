@@ -10,7 +10,7 @@ if not capture.isOpened():
     print("Cannot open camera")
     exit()
 
-capture_count = 10
+capture_count = 20
 
 if not os.path.isdir("img"):
     os.mkdir("img")
