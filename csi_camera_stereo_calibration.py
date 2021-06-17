@@ -44,10 +44,10 @@ if not os.path.isdir("img/camera0"):
 if not os.path.isdir("img/camera1"):
     os.mkdir("img/camera1")
 
-camera_capture = cv.VideoCapture(gstreamer_pipeline(sensor_id=0),
+capture = cv.VideoCapture(gstreamer_pipeline(sensor_id=0),
                                                     cv.CAP_GSTREAMER)
 
-if not camera_capture.isOpened():
+if not capture.isOpened():
     print("Cannot open camera 0")
     exit()
 
@@ -65,12 +65,12 @@ while(capture_count):
         capture_count = capture_count - 1
         continue
 
-camera_capture.release()
+capture.release()
 
-camera_capture = cv.VideoCapture(gstreamer_pipeline(sensor_id=1),
+capture = cv.VideoCapture(gstreamer_pipeline(sensor_id=1),
                                                     cv.CAP_GSTREAMER)
 
-if not camera_capture.isOpened():
+if not capture.isOpened():
     print("Cannot open camera 1")
     exit()
 
@@ -88,4 +88,4 @@ while(capture_count):
         capture_count = capture_count - 1
         continue
 
-camera_capture.release()
+capture.release()
