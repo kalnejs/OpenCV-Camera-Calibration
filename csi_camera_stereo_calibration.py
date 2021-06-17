@@ -35,6 +35,15 @@ def gstreamer_pipeline(
         )
     )
 
+if not os.path.isdir("img"):
+    os.mkdir("img")
+
+if not os.path.isdir("img/camera0"):
+    os.mkdir("img/camera0")
+
+if not os.path.isdir("img/camera1"):
+    os.mkdir("img/camera1")
+
 camera_capture = cv.VideoCapture(gstreamer_pipeline(sensor_id=0),
                                                     cv.CAP_GSTREAMER)
 
@@ -43,9 +52,6 @@ if not camera_capture.isOpened():
     exit()
 
 capture_count = 20
-
-if not os.path.isdir("img/camera0"):
-    os.mkdir("img/camera0")
 
 while(capture_count):
 
@@ -69,9 +75,6 @@ if not camera_capture.isOpened():
     exit()
 
 capture_count = 20
-
-if not os.path.isdir("img/camera1"):
-    os.mkdir("img/camera1")
 
 while(capture_count):
 
