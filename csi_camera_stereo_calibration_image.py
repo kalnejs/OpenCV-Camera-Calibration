@@ -39,7 +39,7 @@ for fname in images_camera0:
 
 cv.destroyAllWindows()
 
-img = cv.imread(images[0])
+img = cv.imread(images_camera0[0])
 cv.imshow('img', img)
 gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
@@ -84,7 +84,7 @@ for fname in images_camera1:
 
 cv.destroyAllWindows()
 
-img = cv.imread(images[0])
+img = cv.imread(images_camera1[0])
 cv.imshow('img', img)
 gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
